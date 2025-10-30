@@ -1,6 +1,6 @@
-import { useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../App';
+import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "@/contexts/AuthContext";
 
 function Login() {
   const { isInitialized } = useContext(AuthContext);
