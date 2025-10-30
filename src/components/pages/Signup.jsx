@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '@/layouts/Root';
 
 function Signup() {
-const { isInitialized } = useAuth();
   
-  useEffect(() => {
-    if (isInitialized) {
-      // Show signup UI in this component
-      const { ApperUI } = window.ApperSDK;
-      ApperUI.showSignup("#authentication");
-    }
-  }, [isInitialized]);
+useEffect(() => {
+    const { ApperUI } = window.ApperSDK;
+    ApperUI.showSignup("#authentication");
+  }, []);
   
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
