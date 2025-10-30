@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCart } from "@/App";
-import { useAuth } from "@/contexts/AuthContext";
 import categoryService from "@/services/api/categoryService";
 import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
 import Button from "@/components/atoms/Button";
 import Loading from "@/components/ui/Loading";
 import SearchBar from "@/components/molecules/SearchBar";
+import { clearUser } from "@/store/userSlice";
 
 const HARDCODED_CATEGORIES = [
   { id: "flash-sales", name: "Flash Sales", icon: "Flame" },
@@ -31,7 +31,18 @@ const HARDCODED_CATEGORIES = [
 
 const Header = ({ onSearch, onOpenCart, categories, categoriesLoading }) => {
   const { totalItems } = useCart();
-const { logout } = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const logout = async () => {
+    try {
+      dispatch(clearUser());
+      navigate('/login');
+      await window.ApperSDK?.ApperUI?.logout();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
   const user = useSelector((state) => state.user.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
