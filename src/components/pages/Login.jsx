@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useApperSDK } from "@/hooks/useApperSDK";
 
 function Login() {
-  const { isInitialized } = useApperSDK();
   
-  useEffect(() => {
-    if (isInitialized) {
-      // Show login UI in this component
+useEffect(() => {
+    // Check if ApperSDK is loaded on window object
+    if (window.ApperSDK) {
       const { ApperUI } = window.ApperSDK;
       ApperUI.showLogin("#authentication");
     }
-  }, [isInitialized]);
+  }, []);
   
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
