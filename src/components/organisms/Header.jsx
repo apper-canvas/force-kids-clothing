@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAuth } from "@/layouts/Root";
-import { useCart } from "@/contexts/CartContext";
+import { useCart } from "@/layouts/MainLayout";
 import categoryService from "@/services/api/categoryService";
 import ApperIcon from "@/components/ApperIcon";
 import Badge from "@/components/atoms/Badge";
