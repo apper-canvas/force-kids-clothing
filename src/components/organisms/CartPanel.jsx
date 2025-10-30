@@ -5,10 +5,10 @@ import Button from "@/components/atoms/Button";
 import CartItem from "@/components/molecules/CartItem";
 import Empty from "@/components/ui/Empty";
 
-import { useOutletContext } from "react-router-dom";
+import { useCart } from "@/layouts/MainLayout";
 
 const CartPanel = ({ isOpen, onClose }) => {
-const { cartItems, updateQuantity, removeFromCart } = useOutletContext();
+const { cartItems, updateQuantity, removeFromCart } = useCart();
   const navigate = useNavigate();
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
