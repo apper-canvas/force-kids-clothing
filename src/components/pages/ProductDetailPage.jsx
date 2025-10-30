@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { useCart } from "@/App";
+import { useOutletContext } from "react-router-dom";
 import RecentlyViewed from "@/components/organisms/RecentlyViewed";
 import ProductRecommendations from "@/components/organisms/ProductRecommendations";
 import ApperIcon from "@/components/ApperIcon";
@@ -33,7 +33,7 @@ loadProduct();
     loadRecommendations();
   }, [id]);
 
-  const { trackProductView, recentlyViewed } = useCart();
+const { trackProductView, recentlyViewed } = useOutletContext();
 
   useEffect(() => {
     if (product) {
@@ -82,7 +82,7 @@ async function loadProduct() {
   }
 
 
-  const { addToCart } = useCart();
+const { addToCart } = useOutletContext();
 
 function handleAddToCart() {
     // Check if product is out of stock

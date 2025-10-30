@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
-import { useCart } from "@/App";
+import { useOutletContext } from "react-router-dom";
 import orderService from "@/services/api/orderService";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
-const { cartItems, clearCart } = useCart();
+const { cartItems, clearCart } = useOutletContext();
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [orderNumber, setOrderNumber] = useState(null);
