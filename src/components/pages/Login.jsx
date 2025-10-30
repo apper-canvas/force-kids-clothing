@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '@/layouts/Root';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useApperSDK } from "@/hooks/useApperSDK";
 
 function Login() {
-const { isInitialized } = useAuth();
+  const { isInitialized } = useApperSDK();
   
   useEffect(() => {
     if (isInitialized) {
