@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useAuth } from "@/layouts/Root";
 import { useCart } from "@/App";
+import { useAuth } from "@/contexts/AuthContext";
+import categoryService from "@/services/api/categoryService";
 import ApperIcon from "@/components/ApperIcon";
-import SearchBar from "@/components/molecules/SearchBar";
-import Loading from "@/components/ui/Loading";
 import Badge from "@/components/atoms/Badge";
 import Button from "@/components/atoms/Button";
-import categoryService from "@/services/api/categoryService";
+import Loading from "@/components/ui/Loading";
+import SearchBar from "@/components/molecules/SearchBar";
 
 const HARDCODED_CATEGORIES = [
   { id: "flash-sales", name: "Flash Sales", icon: "Flame" },
